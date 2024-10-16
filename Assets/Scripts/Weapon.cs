@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     public bool isShooting;
     public bool readyToShoot;
     public bool allowReset = true;
-    public float shootingDelay = 2f;
+    public float shootingDelay = 0.2f;
 
     //Burst
     public int bulletsPerBurst = 3;
@@ -80,7 +80,7 @@ public class Weapon : MonoBehaviour
 
 
         //Shoot the bullet 
-        bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward.normalized * bulletSpeed, ForceMode.Impulse);
+        bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletSpeed, ForceMode.Impulse);
 
         //Bullet life-time ends
         StartCoroutine(DestroyBulletAfterTime(bullet,bulletPrefabLife));
