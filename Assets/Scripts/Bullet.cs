@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+
+
+    public int bulletDamage;
+
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
@@ -12,12 +16,6 @@ public class Bullet : MonoBehaviour
             print("hit" +  collision.gameObject.name + "!");
 
             CreateBulletImpact(collision);
-
-            RobotHealth robotHealth = collision.gameObject.GetComponent<RobotHealth>();
-            if (robotHealth != null)
-            {
-                robotHealth.TakeDamage(1);  // Each bullet deals 1 damage
-            }
 
             Destroy(gameObject);
 
@@ -28,6 +26,15 @@ public class Bullet : MonoBehaviour
             print("You missed and hit a wall!!");
 
             CreateBulletImpact(collision);
+
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Robot"))
+        {
+            print("You hit a the robot!! " + bulletDamage + " damage taken");
+
+            collision.gameObject.GetComponent<Robot>().TakeDamage(bulletDamage);
 
             Destroy(gameObject);
         }

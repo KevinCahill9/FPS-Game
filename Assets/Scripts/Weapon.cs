@@ -27,6 +27,8 @@ public class Weapon : MonoBehaviour
     public float bulletSpeed = 30;
     public float bulletPrefabLife = 3f;
 
+    public int weaponDamage;
+
     public enum ShootingMode
     {
         Single,
@@ -75,6 +77,8 @@ public class Weapon : MonoBehaviour
 
         //Bullet is made 
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+        Bullet b = bullet.GetComponent<Bullet>();
+        b.bulletDamage = weaponDamage;
 
         bullet.transform.forward = shootingDirection;
 
