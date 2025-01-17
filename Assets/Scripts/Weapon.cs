@@ -29,6 +29,8 @@ public class Weapon : MonoBehaviour
 
     public int weaponDamage;
 
+    public GameObject muzzleEffect; 
+
     public enum ShootingMode
     {
         Single,
@@ -70,8 +72,10 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
-
+        muzzleEffect.GetComponent<ParticleSystem>().Play();
         readyToShoot = false;
+
+        SoundManager.Instance.shottingSoundAk.Play();
 
         Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
 

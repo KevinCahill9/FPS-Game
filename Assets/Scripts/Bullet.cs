@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,10 +35,26 @@ public class Bullet : MonoBehaviour
         {
             print("You hit a the robot!! " + bulletDamage + " damage taken");
 
-            collision.gameObject.GetComponent<Robot>().TakeDamage(bulletDamage);
+            if (collision.gameObject.GetComponent<Robot>().isDead == false )
+            {
+                collision.gameObject.GetComponent<Robot>().TakeDamage(bulletDamage);
+            }
+
+            CreateRobotImpactEffect(collision);
 
             Destroy(gameObject);
         }
+    }
+
+    private void CreateRobotImpactEffect(Collision objectHit)
+    {
+        ContactPoint contact = objectHit.contacts[0];
+
+        GameObject sparkEffectPrefab = Instantiate(
+            GlobalReferences.Instance.robotImpact, contact.point, Quaternion.LookRotation(contact.normal)
+            );
+
+        sparkEffectPrefab.transform.SetParent(objectHit.gameObject.transform);
     }
 
     void CreateBulletImpact(Collision objectHit)

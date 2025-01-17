@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalReferences : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
-    // Singleton
-    public static GlobalReferences Instance { get; set; }
+    public static SoundManager Instance { get; set; }
 
-    public GameObject bulletImpactPrefab;
-    public GameObject robotImpact;
+    public AudioSource shottingSoundAk;
+
+
+    public AudioSource playerChannel;
+    public AudioClip playerHit;
+    public AudioClip playerDead; 
+
+
 
     private void Awake()
     {

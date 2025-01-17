@@ -15,6 +15,8 @@ public class Robot : MonoBehaviour
 
     [SerializeField] private Slider healthBar;
 
+    public bool isDead;
+
     private void Start()
     {
         maxHitPoints = HitPoints;
@@ -48,6 +50,8 @@ public class Robot : MonoBehaviour
             {
                 animator.SetTrigger("DIE2");
             }
+
+            isDead = true;
         }
         else
         {
