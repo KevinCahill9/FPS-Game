@@ -1,6 +1,6 @@
 # Weak-Point Visualisation First-Person Shooter Game
 
-**Note:** Due to file size limitations, this GitHub repository only has updated scripts and is not maintained for the rest of the assets. The full Unity project and a Windows can be download from the links below:
+**Note:** Due to file size limitations, this GitHub repository only has updated scripts and is not maintained for the rest of the assets. The full Unity project and a Windows build can be download from the links below:
 
 ## Downloads
 
