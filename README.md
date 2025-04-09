@@ -6,7 +6,10 @@
 
 **[Download Full Unity Project (~13.6 GB)](Placeholder)**
 
-**[Download Windows Game Build (~200 MB)](Placeholder2)**
+**[Download Windows Game Build (~200 MB)](Placeholder2)**  
+
+This README is intended for setting up the full project.  
+If your downloading the standalone build version, just extract and run the .exe file to begin playing.
 
 ## Project Overview
 
