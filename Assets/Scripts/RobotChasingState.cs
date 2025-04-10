@@ -1,3 +1,7 @@
+// Note: This script may include code or patterns modified from Unity tutorials.
+// It has been modified and extended to suit the requirments of the project.
+// Source: https://www.youtube.com/playlist?list=PLtLToKUhgzwm1rZnTeWSRAyx9tl8VbGUE
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +13,9 @@ public class RobotChasingState : StateMachineBehaviour
     NavMeshAgent agent;
     Transform player;
 
-    public float chaseSpeed = 6f;
+    public float chaseSpeed = 8f;
 
-    public float stopChasingDistance = 21;
+    public float stopChasingDistance = 24;
     public float attackDistance = 2.5f;
 
 

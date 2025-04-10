@@ -1,3 +1,7 @@
+// Note: This script may include code or patterns modified from Unity tutorials.
+// It has been modified and extended to suit the requirments of the project.
+// Source: https://www.youtube.com/watch?v=1uW-GbHrtQc
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,19 +11,15 @@ public class PlayerMovement : MonoBehaviour
 {
     public Camera playerCamera;
     public float walkSpeed = 6f;
-    public float runSpeed = 12f;
-    public float jumpPower = 7f;
-    public float gravity = 10f;
+    public float runSpeed = 10f;
+    public float jumpPower = 5f;
+    public float gravity = 15f;
     public float lookSpeed = 2f;
     public float lookXLimit = 45f;
-    public float defaultHeight = 2f;
-    public float crouchHeight = 1f;
-    public float crouchSpeed = 3f;
 
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
     private CharacterController characterController;
-
     private bool canMove = true;
 
     void Start()
@@ -52,20 +52,6 @@ public class PlayerMovement : MonoBehaviour
         if (!characterController.isGrounded)
         {
             moveDirection.y -= gravity * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.R) && canMove)
-        {
-            characterController.height = crouchHeight;
-            walkSpeed = crouchSpeed;
-            runSpeed = crouchSpeed;
-
-        }
-        else
-        {
-            characterController.height = defaultHeight;
-            walkSpeed = 6f;
-            runSpeed = 12f;
         }
 
         characterController.Move(moveDirection * Time.deltaTime);

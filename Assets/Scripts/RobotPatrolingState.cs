@@ -1,3 +1,7 @@
+// Note: This script may include code or patterns modified from Unity tutorials.
+// It has been modified and extended to suit the requirments of the project.
+// Source: https://www.youtube.com/playlist?list=PLtLToKUhgzwm1rZnTeWSRAyx9tl8VbGUE
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,8 +17,8 @@ public class RobotPatrolingState : StateMachineBehaviour
     Transform player;
     NavMeshAgent agent;
 
-    public float detectionArea = 18f;
-    public float patrolSpeed = 2f;
+    public float detectionArea = 20f;
+    public float patrolSpeed = 4f;
 
     List<Transform> waypointList = new List<Transform>();
 

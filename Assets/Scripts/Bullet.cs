@@ -1,3 +1,7 @@
+// Note: This script may include code or patterns modified from Unity tutorials.
+// It has been modified and extended to suit the requirments of the project.
+// Source: https://www.youtube.com/playlist?list=PLtLToKUhgzwm1rZnTeWSRAyx9tl8VbGUE
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,46 +9,52 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-
+    public static float totalHits = 0;
+    public static float highlightedHits = 0;
 
     public int bulletDamage;
 
     // Start is called before the first frame update
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Target"))
+        Robot robot = collision.gameObject.GetComponentInParent<Robot>();
+
+        if (robot != null && !robot.isDead)
         {
-            print("hit" +  collision.gameObject.name + "!");
+            totalHits++;
 
-            CreateBulletImpact(collision);
+            string hitTag = collision.gameObject.tag;  
 
-            Destroy(gameObject);
+            robot.TakeDamage(bulletDamage, hitTag);
 
-        }
-        
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            print("You missed and hit a wall!!");
-
-            CreateBulletImpact(collision);
-
-            Destroy(gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Robot"))
-        {
-            print("You hit a the robot!! " + bulletDamage + " damage taken");
-
-            if (collision.gameObject.GetComponent<Robot>().isDead == false )
+            if (robot.IsLimbHighlighted(hitTag))
             {
-                collision.gameObject.GetComponent<Robot>().TakeDamage(bulletDamage);
+                highlightedHits++;  
+                
             }
 
-            CreateRobotImpactEffect(collision);
+            Debug.Log($"{hitTag} hit. Damage applied.");
 
+            CreateRobotImpactEffect(collision);
+            Destroy(gameObject);
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            Debug.Log($"Hit {collision.gameObject.name}!");
+            CreateBulletImpact(collision);
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("You missed and hit a wall!");
+            CreateBulletImpact(collision);
             Destroy(gameObject);
         }
     }
+
 
     private void CreateRobotImpactEffect(Collision objectHit)
     {

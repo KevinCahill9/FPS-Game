@@ -1,3 +1,7 @@
+// Note: This script may include code or patterns modified from Unity tutorials.
+// It has been modified and extended to suit the requirments of the project.
+// Source: https://www.youtube.com/playlist?list=PLtLToKUhgzwm1rZnTeWSRAyx9tl8VbGUE
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +11,7 @@ using Random = UnityEngine.Random;
 
 public class RobotSpawnController : MonoBehaviour
 {
-    public int startRobotsPerWave = 1;
+    public int startRobotsPerWave = 3;
     public int currentRobotsPerWave;
 
     public float spawnDelay = 0.5f; //delay between spawning of each robot, not delay between waves;
@@ -26,6 +30,7 @@ public class RobotSpawnController : MonoBehaviour
     public TextMeshProUGUI prepTime;
     public TextMeshProUGUI WaveRound;
 
+
     private void Start()
     {
         currentRobotsPerWave = startRobotsPerWave;
@@ -42,6 +47,9 @@ public class RobotSpawnController : MonoBehaviour
 
         StartCoroutine(SpawnWave());
     }
+
+ 
+
 
     private IEnumerator SpawnWave()
     {
